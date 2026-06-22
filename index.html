@@ -97,7 +97,8 @@
   #sinList li:last-child::after{content:"";}
   /* plaque styling for sins list */
   .sins-plaque{background:rgba(255,253,247,.65);border:1px solid #d3bd92;padding:10px;border-radius:4px;margin:10px auto;text-align:left;max-width:440px;line-height:1.3;}
-  .sins-plaque li{font-size:14px;color:var(--ink);} 
+  /* make sins list more compact */
+  .sins-plaque li{font-size:13px; line-height:1.4; color:var(--ink);} 
   .frieze{display:flex;align-items:center;justify-content:center;gap:18px;color:var(--gold);margin:18px 0 4px;}
   .frieze svg{width:30px;height:30px;}.frieze .dot{width:3px;height:3px;border-radius:50%;background:var(--gold-bright);}
   .tri-h{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:24px;color:var(--oxblood);text-align:center;margin-top:6px;}
@@ -212,26 +213,28 @@
         <div class="name-wrap"><div class="cert-name" id="certName">Имя</div></div>
         <div class="rank-emblem" id="rankEmblem"></div>
         <div class="rankbadge" id="certRank"></div>
-        <p class="typeline" id="certType"></p>
-        <p class="typedesc" id="certTypeDesc"></p>
 
-
-        <!-- Absolution intro and list of sins; triathlon moved after remedies -->
+        <!-- Absolution text and sins plaque come immediately after rank -->
         <p class="cert-body" data-i18n="c_intro2"></p>
-        <!-- scientific explanation and help text -->
-        <p class="typedesc2" id="certWhy"></p>
-        <p class="typedesc2" id="certHelp"></p>
         <ul class="clist sins-plaque" id="sinList"></ul>
+
+        <!-- Remedies heading and list -->
         <div class="ch" data-i18n="c_ch_remedies"></div>
         <ul class="clist" id="remedyList"></ul>
 
-        <!-- Triathlon section moved lower for better flow -->
+        <!-- Type and scientific explanation -->
+        <p class="typeline" id="certType"></p>
+        <p class="typedesc" id="certTypeDesc"></p>
+        <p class="typedesc2" id="certWhy"></p>
+        <p class="typedesc2" id="certHelp"></p>
+
+        <!-- Triathlon section -->
         <p class="tri-h" data-i18n="tri_heading"></p>
         <p class="tri-sub" data-i18n="tri_sub"></p>
         <div class="tri" id="triBlock"></div>
         <p class="tri-note" data-i18n="tri_note"></p>
 
-        <!-- Closing line after all sections -->
+        <!-- Closing line -->
         <p class="closing" data-i18n="c_closing"></p>
 
         <div class="seal-wrap">
