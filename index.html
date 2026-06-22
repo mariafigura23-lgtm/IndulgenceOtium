@@ -358,15 +358,27 @@
     '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 36 C20 25 26 19 32 19 C38 19 44 25 44 36 C44 41 41 43 41 47 L23 47 C23 43 20 41 20 36 Z"/><circle cx="27" cy="35" r="3.3" fill="currentColor" stroke="none"/><circle cx="37" cy="35" r="3.3" fill="currentColor" stroke="none"/><path d="M32 39 L30 44 L34 44 Z" fill="currentColor" stroke="none"/><line x1="27" y1="47" x2="27" y2="51"/><line x1="32" y1="47" x2="32" y2="51"/><line x1="37" y1="47" x2="37" y2="51"/><path d="M21 18 L25 9 L31 15 L32 6 L33 15 L39 9 L43 18 Z" fill="currentColor" stroke="none"/></svg>'
   ];
   const SINS=[
-   {t:'A',ru:"Считаю отдых лишь паузой между задачами",en:"I treat rest as a mere gap between tasks",rRu:["объявить паузу самоцелью","лечь и не вставать из принципа"],rEn:["to declare the pause an end in itself","to lie down and not get up, on principle"]},
+   {t:'A',
+    ru:"В отпуске выбираю beach club с вайфаем, чтобы поработать «если что»",
+    en:"On holiday I pick a beach club with Wi‑Fi so I can work ‘just in case’",
+    rRu:["выбрать место без вай‑фая","оставить ноутбук дома"],
+    rEn:["to choose a place with no Wi‑Fi","to leave your laptop at home"]},
    {t:'B',ru:"Откладываю до последнего, а потом героически спасаю всё за ночь",en:"I delay till the last, then heroically save it all in one night",rRu:["лечь спать и спасти всё завтра","сдать вовремя — и без подвига"],rEn:["to go to sleep and save it tomorrow","to deliver on time, with no heroics"]},
    {t:'C',ru:"Завожу пять проектов и ни один не довожу до конца",en:"I start five projects and finish none",rRu:["с удовольствием бросить начатое","оставить четыре проекта в покое"],rEn:["to happily abandon what you started","to leave four projects in peace"]},
    {t:'D',ru:"Шлифую презентацию, которую никто не откроет",en:"I polish a deck no one will open",rRu:["оставить презентацию как есть","отправить, не открывая снова"],rEn:["to leave the deck as it is","to send it without reopening"]},
    {t:'A',ru:"Прихожу раньше всех и ухожу позже всех — из принципа",en:"I arrive before everyone and leave after everyone — on principle",rRu:["уйти первым и помахать всем рукой","выйти ровно в 18:00 без объяснений"],rEn:["to leave first and wave to everyone","to leave at 6 sharp with no explanation"]},
    {t:'B',ru:"Лучше не сдать вовсе, чем сдать неидеально",en:"Better not to deliver at all than to deliver imperfectly",rRu:["сдать «достаточно хорошо» — и выдохнуть","отпустить идеал на свободу"],rEn:["to deliver 'good enough' — and exhale","to set the ideal free"]},
    {t:'C',ru:"Открываю сорок вкладок и забываю, что искал",en:"I open forty tabs and forget what I was looking for",rRu:["закрыть все вкладки разом","оставить одну вкладку — с котиками"],rEn:["to close all the tabs at once","to keep one tab — with cats"]},
-   {t:'D',ru:"Не могу делегировать — всё равно переделаю",en:"I can't delegate — I'll redo it anyway",rRu:["отдать дело и не проверять","довериться кому-то хоть раз"],rEn:["to hand it over and not check","to trust someone, just once"]},
-   {t:'A',ru:"Тайно горжусь фразой «я очень занят»",en:"I secretly take pride in saying 'I'm so busy'",rRu:["говорить «я отдыхаю» с тем же достоинством","хвастаться количеством свободного времени"],rEn:["to say 'I'm resting' with equal dignity","to boast about your free time instead"]},
+   {t:'D',
+    ru:"Делаю всё сам, потому что «если хочешь сделать что-то хорошо…»",
+    en:"I do everything myself because ‘if you want something done right…’",
+    rRu:["отдать дело и не проверять","довериться кому-то хоть раз"],
+    rEn:["to hand it over and not check","to trust someone, just once"]},
+   {t:'A',
+    ru:"Выхожу на связь даже на горнолыжном склоне",
+    en:"I answer messages even from a ski slope",
+    rRu:["оставить телефон в шкафу","не отвечать целый день"],
+    rEn:["to leave your phone locked away","to not reply for an entire day"]},
    {t:'B',ru:"Между авралами лежу пластом и виню себя за это",en:"Between sprints I lie flat and blame myself for it",rRu:["лежать пластом без чувства вины","объявить лежание заслуженным"],rEn:["to lie flat without guilt","to declare lying-down well-earned"]},
    {t:'C',ru:"Отвечаю в трёх чатах, обедаю и слушаю подкаст одновременно",en:"I reply in three chats, eat lunch and listen to a podcast at once",rRu:["делать одно дело и наслаждаться им","обедать молча и без экранов"],rEn:["to do one thing and savour it","to lunch in silence, screen-free"]},
    {t:'D',ru:"Перечитываю письмо семь раз перед отправкой",en:"I reread an email seven times before sending",rRu:["отправить с первого раза","смириться с одной опечаткой"],rEn:["to send on the first try","to make peace with one typo"]}
@@ -554,7 +566,24 @@
     $('#sinList').innerHTML=state.indices.map(i=>'<li>'+sinText(i)+'</li>').join('');
     $('#remedyList').innerHTML=state.indices.map(i=>'<li>'+sinRem(i,state.remedy[i])+'</li>').join('');
     const rows=[[t.tri_body_label,t.triBody[state.tri.b][cur]],[t.tri_mind_label,t.triMind[state.tri.m][cur]],[t.tri_rest_label,t.triRest[state.tri.r][cur]]];
-    $('#triBlock').innerHTML=rows.map(r=>'<div class="tri-row"><span class="tri-cat">'+r[0]+'</span><span class="tri-act">'+r[1]+'</span></div>').join('');
+    // Build triathlon rows and attach a tennis camp link if the body activity involves tennis
+    $('#triBlock').innerHTML=rows.map((r, idx) => {
+      let act = r[1];
+      // Check only the body activity (idx===0) for tennis keywords
+      if(idx===0){
+        const actLower = act.toLowerCase();
+        // detect tennis regardless of language
+        if((cur==='ru' && actLower.includes('теннис')) || (cur==='en' && actLower.includes('tennis'))){
+          // Instagram carousel link showing the tennis camp
+          const url = 'https://www.instagram.com/p/DZr5ymRjJ7W/?img_index=9&igsh=cDFqeXQ0Zmt6bjRx';
+          // wrap the activity text itself as a link
+          act = '<a href="'+url+'" target="_blank" rel="noopener">'+act+'</a>';
+          // Append a note about the tennis camp in the appropriate language
+          act += cur==='ru' ? ' — кстати, мы делаем теннисные лагеря' : ' — by the way, we run tennis camps';
+        }
+      }
+      return '<div class="tri-row"><span class="tri-cat">'+r[0]+'</span><span class="tri-act">'+act+'</span></div>';
+    }).join('');
     $('#brandLine').textContent=BRAND_HANDLE;
     $('#sc_latin').textContent=t.c_latin_head; $('#sc_title').textContent=t.c_title; $('#sc_sublatin').textContent=t.c_sublatin; $('#sc_order').textContent=t.c_order;
     $('#sc_intro').textContent=t.c_intro1; $('#sc_name').textContent=state.name;
