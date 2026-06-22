@@ -83,6 +83,8 @@
   .typeline{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--oxblood);margin-top:4px;}
   .typeline b{color:var(--ink);}
   .typedesc{font-style:italic;font-size:16px;color:var(--ink-soft);max-width:430px;margin:4px auto 8px;text-align:center;}
+  /* additional explanatory paragraphs after type */
+  .typedesc2{font-style:italic;font-size:16px;color:var(--ink-soft);max-width:460px;margin:4px auto 8px;text-align:center;}
   .ch{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxblood);margin:16px 0 6px;text-align:center;}
   .clist{text-align:left;max-width:440px;margin:6px auto 4px;}
   .clist li{list-style:none;padding:5px 0 5px 28px;position:relative;font-size:18px;font-weight:500;}
@@ -93,6 +95,9 @@
   #sinList li::before{display:none;}
   #sinList li::after{content:", ";}
   #sinList li:last-child::after{content:"";}
+  /* plaque styling for sins list */
+  .sins-plaque{background:rgba(255,253,247,.65);border:1px solid #d3bd92;padding:10px;border-radius:4px;margin:10px auto;text-align:left;max-width:440px;line-height:1.3;}
+  .sins-plaque li{font-size:14px;color:var(--ink);} 
   .frieze{display:flex;align-items:center;justify-content:center;gap:18px;color:var(--gold);margin:18px 0 4px;}
   .frieze svg{width:30px;height:30px;}.frieze .dot{width:3px;height:3px;border-radius:50%;background:var(--gold-bright);}
   .tri-h{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:24px;color:var(--oxblood);text-align:center;margin-top:6px;}
@@ -210,19 +215,23 @@
         <p class="typeline" id="certType"></p>
         <p class="typedesc" id="certTypeDesc"></p>
 
-        <!-- Move triathlon section before the sins and remedies -->
+
+        <!-- Absolution intro and list of sins; triathlon moved after remedies -->
+        <p class="cert-body" data-i18n="c_intro2"></p>
+        <!-- scientific explanation and help text -->
+        <p class="typedesc2" id="certWhy"></p>
+        <p class="typedesc2" id="certHelp"></p>
+        <ul class="clist sins-plaque" id="sinList"></ul>
+        <div class="ch" data-i18n="c_ch_remedies"></div>
+        <ul class="clist" id="remedyList"></ul>
+
+        <!-- Triathlon section moved lower for better flow -->
         <p class="tri-h" data-i18n="tri_heading"></p>
         <p class="tri-sub" data-i18n="tri_sub"></p>
         <div class="tri" id="triBlock"></div>
         <p class="tri-note" data-i18n="tri_note"></p>
 
-        <!-- Absolution intro and list of sins now come after the triathlon -->
-        <p class="cert-body" data-i18n="c_intro2"></p>
-        <ul class="clist" id="sinList"></ul>
-        <div class="ch" data-i18n="c_ch_remedies"></div>
-        <ul class="clist" id="remedyList"></ul>
-
-        <!-- Closing line after sins and remedies -->
+        <!-- Closing line after all sections -->
         <p class="closing" data-i18n="c_closing"></p>
 
         <div class="seal-wrap">
@@ -393,11 +402,31 @@
       ig_hint:"Картинка сохранена. Откройте Instagram и выложите её в Stories.",
       ranks:["Послушник отдыха","Брат во грехе переработки","Магистр трудоголизма","Архиепископ дедлайнов","Великий Грешник Канцелярии"],
       types:{
-        A:{n:"Неустанный", d:"Работаете быстро и без остановки, гоните к дедлайну и не умеете притормозить — классический трудоголик по Робинсону."},
-        B:{n:"Булимический", d:"Тянете до последнего, а затем в авральном рывке доделываете идеально или никак. Отдых и вина у вас всегда рядом."},
-        C:{n:"Адреналиновый", d:"Беретесь за десять дел сразу, жаждете стимула и новизны, скучаете и тревожитесь в тишине."},
-        D:{n:"Смакующий", d:"Погружаетесь в детали, доводите до совершенства и не можете отпустить или делегировать."},
-        E:{n:"Многоликий", d:"Вы — трудоголик‑универсал: в вас намешаны повадки сразу нескольких типов — и геройство, и прокрастинация, и десять дел разом."}
+        A:{n:"Неустанный",
+           d:"Работаете быстро и без остановки, гоните к дедлайну и не умеете притормозить — классический трудоголик по Робинсону.",
+           why:"Почему так работает: вы постоянно живёте на максимальной скорости, получая всплески адреналина и дофамина, и тело привыкает к жизни на стрессе.",
+           help:"Что поможет: планируйте паузы, заранее заканчивайте задачи и вводите ритуалы остановки. Учитесь тормозить до того, как наступит крайний срок."
+        },
+        B:{n:"Булимический",
+           d:"Тянете до последнего, а затем в авральном рывке доделываете идеально или никак. Отдых и вина у вас всегда рядом.",
+           why:"Почему так работает: страх сделать плохо приводит к прокрастинации, а затем к героическим ночным забегам за дозой адреналина.",
+           help:"Что поможет: разбивайте большие задачи на части, ставьте микро‑дедлайны и выбирайте принцип «достаточно хорошо». Разрешайте себе сдавать вовремя, даже если не идеально."
+        },
+        C:{n:"Адреналиновый",
+           d:"Берётесь за десять дел сразу, жаждете стимула и новизны, скучаете и тревожитесь в тишине.",
+           why:"Почему так работает: вам нужны постоянные дофаминовые всплески, поэтому вы переключаетесь и теряете интерес, когда становится скучно.",
+           help:"Что поможет: практикуйте монотаскинг, выполняйте по одной задаче, тренируйте концентрацию и отдыхайте осознанно без гаджетов."
+        },
+        D:{n:"Смакующий",
+           d:"Погружаетесь в детали, доводите до совершенства и не можете отпустить или делегировать.",
+           why:"Почему так работает: перфекционизм и контроль заставляют бесконечно улучшать, бояться делегирования и завершения.",
+           help:"Что поможет: учитесь делегировать, завершать и принимать несовершенство. Доверяйте другим и отпускайте."
+        },
+        E:{n:"Многоликий",
+           d:"Вы — трудоголик‑универсал: в вас намешаны повадки сразу нескольких типов — и геройство, и прокрастинация, и десять дел разом.",
+           why:"Почему так работает: вы сочетаете несколько трудоголических паттернов, что приводит к неспособности разделять труд и отдых.",
+           help:"Что поможет: сочетайте инструменты из всех категорий — микро‑сроки, паузы, концентрация и делегирование. Выберите по одной практике и придерживайтесь её."
+        }
       },
       triBody:[
         {ru:"партия в теннис 🎾",s:["spring","summer","autumn"]},{ru:"долгая прогулка быстрым шагом",s:"all"},
@@ -447,11 +476,31 @@
       ig_hint:"Image saved. Open Instagram and post it to your Stories.",
       ranks:["Novice of Repose","Brother of Overwork","Master of Workaholism","Archbishop of Deadlines","Grand Sinner of the Chancery"],
       types:{
-        A:{n:"The Relentless", d:"You work fast and without pause, racing to deadlines and unable to slow down — the classic workaholic in Robinson's terms."},
-        B:{n:"The Bulimic", d:"You delay till the last, then in a frantic burst finish it perfectly or not at all. Rest and guilt always travel together."},
-        C:{n:"The Attention-Deficit", d:"You start ten things at once, crave stimulation and novelty, and grow restless in silence."},
-        D:{n:"The Savoring", d:"You immerse yourself in detail, perfect everything, and cannot let go or delegate."},
-        E:{n:"The Many-Faced", d:"An all-round workaholic: you blend the habits of several types at once — heroics, procrastination and ten things at once."}
+        A:{n:"The Relentless",
+           d:"You work fast and without pause, racing to deadlines and unable to slow down — the classic workaholic in Robinson's terms.",
+           why:"Why this pattern arises: you live in constant high gear, feeding on surges of adrenaline and dopamine, and your body becomes addicted to stress.",
+           help:"What will help: schedule breaks, practise finishing early and adopt rituals of downshifting. Train yourself to stop before the deadline arrives."
+        },
+        B:{n:"The Bulimic",
+           d:"You delay till the last, then in a frantic burst finish it perfectly or not at all. Rest and guilt always travel together.",
+           why:"Why this pattern arises: fear of imperfection triggers procrastination and then heroic all‑nighters for a hit of adrenaline.",
+           help:"What will help: break big tasks into parts, set mini‑deadlines and embrace the 'good enough' principle. Allow yourself to deliver on time, even if not perfect."
+        },
+        C:{n:"The Attention-Deficit",
+           d:"You start ten things at once, crave stimulation and novelty, and grow restless in silence.",
+           why:"Why this pattern arises: you seek constant dopamine hits, switching tasks and losing interest as soon as boredom appears.",
+           help:"What will help: practise monotasking, tackle one task at a time, train your focus and rest mindfully without gadgets."
+        },
+        D:{n:"The Savoring",
+           d:"You immerse yourself in detail, perfect everything, and cannot let go or delegate.",
+           why:"Why this pattern arises: perfectionism and control make you endlessly refine, fear delegation and resist finishing.",
+           help:"What will help: practise delegating, finishing and accepting imperfection. Learn to trust others and let go."
+        },
+        E:{n:"The Many-Faced",
+           d:"An all-round workaholic: you blend the habits of several types at once — heroics, procrastination and ten things at once.",
+           why:"Why this pattern arises: you combine several workaholic patterns, leading to an overall inability to distinguish work from rest.",
+           help:"What will help: combine tools from all categories: micro‑deadlines, pauses, focus and delegation. Pick one practice from each and stick to it."
+        }
       },
       triBody:[
         {en:"a game of tennis 🎾",s:["spring","summer","autumn"]},{en:"a long brisk walk",s:"all"},
@@ -495,6 +544,9 @@
     $('#rankEmblem').innerHTML=RANK_EMBLEMS[rankIdx(state.indices.length)];
     $('#certRank').textContent=t.rank_label+t.ranks[rankIdx(state.indices.length)];
     const ty=t.types[state.type]; $('#certType').innerHTML=t.type_label+'<b>'+ty.n+'</b>'; $('#certTypeDesc').textContent=ty.d;
+    // scientific explanation and helpful guidance, if present
+    if(ty.why){ $('#certWhy').textContent = ty.why; } else { $('#certWhy').textContent = ''; }
+    if(ty.help){ $('#certHelp').textContent = ty.help; } else { $('#certHelp').textContent = ''; }
     $('#serial').textContent=state.serial; $('#issueDate').textContent=fmtDate(state.dateObj);
     $('#sinList').innerHTML=state.indices.map(i=>'<li>'+sinText(i)+'</li>').join('');
     $('#remedyList').innerHTML=state.indices.map(i=>'<li>'+sinRem(i,state.remedy[i])+'</li>').join('');
